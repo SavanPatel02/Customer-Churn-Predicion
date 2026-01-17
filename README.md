@@ -116,23 +116,6 @@ streamlit run app.py
 
 ---
 
-## 📁 Project Structure
-
-```
-Customer-Churn-Prediction/
-│
-├── Customer_churn.ipynb
-├── app.py
-├── churn_model.pkl
-├── scaler.pkl
-├── model_columns.pkl
-├── telco.csv
-├── README.md
-└── requirements.txt
-```
-
----
-
 ## 🚀 Future Enhancements
 
 * Use Random Forest or XGBoost models
@@ -146,7 +129,7 @@ Customer-Churn-Prediction/
 ## 👤 Author
 
 Savan Patel
-Data Analytics and Machine Learning Enthusiast
+
 
 ---
 
