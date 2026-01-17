@@ -1,31 +1,34 @@
-name: Streamlit App CI/CD   
+name: Customer Churn CI
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
+      1️⃣ Checkout Code
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
+      2️⃣ Python Setup
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.9'
 
+      3️⃣ Install Dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-        env:
-          PIP_CACHE_DIR: ${{ github.workspace }}/.pip-cache
-          
-      - name: Run Streamlit app
+          pip install -r "churn Prediction/requirements.txt"
+          pip install pylint
+
+      4️⃣ Run Pylint
+      - name: Run pylint
         run: |
-          streamlit run app.py --server.headless true --server.port 8501
-        working-directory: d:\Project\churn Prediction  # Ensure the correct working directory
+          pylint "churn Prediction/app.py" || true
